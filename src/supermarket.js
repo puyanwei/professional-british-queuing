@@ -8,4 +8,7 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   if (customerTimeArray.length === 0) {
     return 0;
   }
+  if (numberOfTills === 1) {
+    return this.sumArray(customerTimeArray);
+  }
 };
