@@ -4,13 +4,17 @@ describe("Supermarket", function() {
   });
 
   describe("#queueTime", function() {
-    it("returns a blank array if the array is zero", function() {
+    it("returns zero if the customerTimeArray is empty", function() {
       var result = supermarket.queueTime([], 1);
       expect(result).toEqual(0);
     });
-    it("returns the sum of the array if there is only one till", function() {
-      var result = supermarket.queueTime([1, 2, 3], 1);
-      expect(result).toEqual(6);
+    it("returns the sum of customerTimeArray if there is only one till", function() {
+      var result = supermarket.queueTime([1, 2, 3, 4], 1);
+      expect(result).toEqual(10);
+    });
+    it("returns the largest number customerTimeArray if the number of tills is more then the number of customers", function() {
+      var result = supermarket.queueTime([1, 2, 3, 3, 2], 9);
+      expect(result).toEqual(3);
     });
   });
 
