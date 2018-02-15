@@ -8,6 +8,10 @@ describe("Supermarket", function() {
       var result = supermarket.queueTime([], 1);
       expect(result).toEqual(0);
     });
+    it("returns the sum of the array if there is only one till", function() {
+      var result = supermarket.queueTime([1, 2, 3], 1);
+      expect(result).toEqual(6);
+    });
   });
 
   describe("#sumArray", function() {
