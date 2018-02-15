@@ -3,6 +3,12 @@ describe("Queuing", function() {
     queuing = new Queuing();
   });
 
+  describe("#queueTime", function() {
+    it("returns a blank array if the array is zero", function() {
+      expect(queuing.queueTime([])).toEqual(0);
+    });
+  });
+
   describe("#sumArray", function() {
     it("returns the sum of the array", function() {
       expect(queuing.sumArray([1, 2, 3])).toEqual(6);
