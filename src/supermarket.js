@@ -11,4 +11,7 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   if (numberOfTills === 1) {
     return this.sumArray(customerTimeArray);
   }
+  if (numberOfTills > customerTimeArray.length) {
+    return Math.max.apply(null, customerTimeArray);
+  }
 };
