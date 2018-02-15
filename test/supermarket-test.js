@@ -1,17 +1,11 @@
-describe("Queuing", function() {
+describe("Supermarket", function() {
   beforeEach(function() {
-    queuing = new Queuing();
-  });
-
-  describe("#queueTime", function() {
-    it("returns a blank array if the array is zero", function() {
-      expect(queuing.queueTime([])).toEqual(0);
-    });
+    supermarket = new Supermarket();
   });
 
   describe("#sumArray", function() {
     it("returns the sum of the array", function() {
-      expect(queuing.sumArray([1, 2, 3])).toEqual(6);
+      expect(supermarket.sumArray([1, 2, 3])).toEqual(6);
     });
   });
 });
