@@ -5,7 +5,8 @@ describe("Supermarket", function() {
 
   describe("#queueTime", function() {
     it("returns a blank array if the array is zero", function() {
-      expect(supermarket.queueTime([], 1)).toEqual(0);
+      var result = supermarket.queueTime([], 1);
+      expect(result).toEqual(0);
     });
   });
 
