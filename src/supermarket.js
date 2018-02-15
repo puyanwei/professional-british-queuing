@@ -12,6 +12,10 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
     return this.sumArray(customerTimeArray);
   }
   if (numberOfTills > customerTimeArray.length) {
-    return Math.max.apply(null, customerTimeArray);
+    return largestNumberInArray(customerTimeArray);
   }
+};
+
+Supermarket.prototype.largestNumberInArray = function(array) {
+  return Math.max.apply(null, array);
 };
