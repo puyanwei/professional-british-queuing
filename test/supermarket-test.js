@@ -12,9 +12,11 @@ describe("Supermarket", function() {
       var result = supermarket.queueTime([1, 2, 3, 4], 1);
       expect(result).toEqual(10);
     });
+  });
+
+  describe("#largestNumberInArray", function() {
     it("returns the largest number customerTimeArray if the number of tills is more then the number of customers", function() {
-      var result = supermarket.queueTime([1, 2, 3, 3, 2], 9);
-      expect(result).toEqual(3);
+      expect(supermarket.largestNumberInArray([1, 2, 6, 2, 2])).toEqual(6);
     });
   });
 
