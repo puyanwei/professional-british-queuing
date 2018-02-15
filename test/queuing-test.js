@@ -1,11 +1,11 @@
 describe("Queuing", function() {
   beforeEach(function() {
-    queueing = new Queuing();
+    queuing = new Queuing();
   });
 
   describe("#sumArray", function() {
     it("returns the sum of the array", function() {
-      expect(queuing.sum([1, 2, 3])).toEqual(6);
+      expect(queuing.sumArray([1, 2, 3])).toEqual(6);
     });
   });
 });
