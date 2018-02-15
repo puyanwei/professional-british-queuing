@@ -3,6 +3,12 @@ describe("Supermarket", function() {
     supermarket = new Supermarket();
   });
 
+  describe("#queueTime", function() {
+    it("returns a blank array if the array is zero", function() {
+      expect(supermarket.queueTime([], 1)).toEqual(0);
+    });
+  });
+
   describe("#sumArray", function() {
     it("returns the sum of the array", function() {
       expect(supermarket.sumArray([1, 2, 3])).toEqual(6);
