@@ -31,7 +31,7 @@ describe("Supermarket", function() {
     it("slices the numberOfTills number amount of elements and adds them to the currentTillers variable", function() {
       supermarket.queueTime([1, 2, 3, 4], 2);
       expect(supermarket.currentTillers).toEqual([1, 2]);
-      // expect(this.customerTimeArray).toEqual([3, 4]);
+      expect(supermarket.customerTimeArray).toEqual([3, 4]);
     });
   });
 
