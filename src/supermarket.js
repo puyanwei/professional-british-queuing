@@ -1,19 +1,22 @@
 function Supermarket() {
   this.customerTimeArray;
-  this.runningTime = 0;
   this.currentTillers = [];
+  this.runningTime = 0;
 }
 
 Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   this.customerTimeArray = customerTimeArray;
-  for (var i = 0; i < customerTimeArray.length - numberOfTills; i++) {
-    if (this.customerTimeArray.length === numberOfTills) {
+  for (var i = 0; i < customerTimeArray.length + 4; numberOfTills++) {
+    console.log(this.customerTimeArray.length < numberOfTills);
+    if (this.customerTimeArray.length < numberOfTills) {
       this.runningTime += Math.max.apply(null, this.customerTimeArray);
       return this.runningTime;
     }
-    console.log(this.customerTimeArray, this.currentTillers, this.runningTime);
     this.currentTillers = this.customerTimeArray.splice(0, numberOfTills);
+    console.log(this.currentTillers + " CT");
     this.deductLowestToAll(this.currentTillers);
+
+    // console.log(this.customerTimeArray, this.currentTillers, this.runningTime);
   }
 };
 
@@ -28,5 +31,4 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   });
   this.runningTime += lowest;
   this.currentTillers = newArray;
-  return newArray;
 };
