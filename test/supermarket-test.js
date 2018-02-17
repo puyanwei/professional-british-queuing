@@ -37,6 +37,12 @@ describe("Supermarket", function() {
       var result = supermarket.deductLowestToAll([8, 5, 3, 9]);
       expect(result).toEqual([5, 2, 6]);
     });
+    it("removed element added to runningTime variable", function() {
+      supermarket.deductLowestToAll([10, 5, 7, 2, 3]);
+      expect(supermarket.runningTime).toEqual(2);
+      supermarket.deductLowestToAll([7, 2, 7, 4, 3]);
+      expect(supermarket.runningTime).toEqual(5);
+    });
   });
 });
 
