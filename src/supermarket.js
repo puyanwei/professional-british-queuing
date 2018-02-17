@@ -25,18 +25,12 @@ Supermarket.prototype.deductLowestToAll = function(array) {
     }
   });
   this.runningTime += lowest;
+  this.currentTillers = newArray;
   return newArray;
 };
 
 Supermarket.prototype.largestNumberInArray = function(array) {
   return Math.max.apply(null, array);
-};
-
-Supermarket.prototype.removeLowestElement = function(array) {
-  var newArray = [];
-  newArray = array.pop(Math.min.apply(null, array));
-  console.log(array);
-  return newArray;
 };
 
 Supermarket.prototype.sumArray = function(array) {
