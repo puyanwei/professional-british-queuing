@@ -47,6 +47,13 @@ describe("Supermarket", function() {
       expect(supermarket.runningTime).toEqual(5);
     });
   });
+
+  describe("#removeLowestElement", function() {
+    it("removes lowest element in the array", function() {
+      var result = supermarket.removeLowestElement([2, 5, 3]);
+      expect(result).toEqual(5, 3);
+    });
+  });
 });
 
 //PLAN
