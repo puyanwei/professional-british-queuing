@@ -54,7 +54,7 @@ describe("Supermarket", function() {
 
   describe("#sliceArray", function() {
     it("slices the current array by the number and returns the new array of elements sliced", function() {
-      var result = supermarket.arraySliced([1, 2, 3, 4, 5], 3);
+      var result = supermarket.sliceArray([1, 2, 3, 4, 5], 3);
       expect(result).toEqual([1, 2, 3]);
     });
   });

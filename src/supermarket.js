@@ -29,6 +29,10 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   return newArray;
 };
 
+Supermarket.prototype.sliceArray = function(array, sliceNumber) {
+  return array.slice(0, sliceNumber);
+};
+
 Supermarket.prototype.largestNumberInArray = function(array) {
   return Math.max.apply(null, array);
 };
