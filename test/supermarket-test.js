@@ -40,7 +40,7 @@ describe("Supermarket", function() {
     it("removed element added to runningTime variable", function() {
       supermarket.deductLowestToAll([10, 5, 7, 2, 3]);
       expect(supermarket.runningTime).toEqual(2);
-      supermarket.deductLowestToAll([7, 2, 7, 4, 3]);
+      supermarket.deductLowestToAll([7, 6, 7, 4, 3]);
       expect(supermarket.runningTime).toEqual(5);
     });
   });

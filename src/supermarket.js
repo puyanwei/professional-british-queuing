@@ -31,5 +31,6 @@ Supermarket.prototype.deductLowestToAll = function(array) {
       newArray.pop(element);
     }
   });
+  this.runningTime += lowest;
   return newArray;
 };
