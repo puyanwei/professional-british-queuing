@@ -33,7 +33,7 @@ describe("Supermarket", function() {
   });
 
   describe("#deductLowestToAll", function() {
-    it("deducts the lowest element of the array to all elements", function() {
+    it("deducts the lowest element of the array to all elements, and removes it", function() {
       var result = supermarket.deductLowestToAll([8, 5, 3, 9]);
       expect(result).toEqual([5, 2, 0, 6]);
     });
