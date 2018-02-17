@@ -5,7 +5,7 @@ describe("Supermarket", function() {
 
   describe("#initialize", function() {
     it("customerTimeArray variable starts undefined", function() {
-      expect(supermarket.customerTimeArray).toEqual();
+      expect(supermarket.customerTimeArray).toBe(undefined);
     });
     it("runningTime variable starts at zero", function() {
       expect(supermarket.runningTime).toEqual(0);
@@ -16,6 +16,10 @@ describe("Supermarket", function() {
   });
 
   describe("#queueTime", function() {
+    it("adds the customerTimeArray array passed in to the customerTimeArray variable", function() {
+      supermarket.queueTime([1, 2, 3, 4], 1);
+      expect(supermarket.customerTimeArray).toEqual([1, 2, 3, 4]);
+    });
     it("returns zero if the customerTimeArray is empty", function() {
       var result = supermarket.queueTime([], 1);
       expect(result).toEqual(0);

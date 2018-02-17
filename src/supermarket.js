@@ -5,6 +5,7 @@ function Supermarket() {
 }
 
 Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
+  this.customerTimeArray = customerTimeArray;
   if (customerTimeArray.length === 0) {
     return 0;
   }
