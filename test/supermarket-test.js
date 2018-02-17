@@ -28,6 +28,10 @@ describe("Supermarket", function() {
       var result = supermarket.queueTime([1, 2, 3, 4], 1);
       expect(result).toEqual(10);
     });
+    it("slices the numberOfTills number amount of elements and adds them to the currentTillers variable", function() {
+      supermarket.queueTime([1, 2, 3, 4], 2);
+      expect(this.currentTillers).toEqual([1, 2]);
+    });
   });
 
   describe("#largestNumberInArray", function() {
