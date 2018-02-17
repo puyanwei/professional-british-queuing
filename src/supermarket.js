@@ -1,5 +1,6 @@
 function Supermarket() {
   this.runningTime = 0;
+  this.currentTillers = [];
 }
 
 Supermarket.prototype.sumArray = function(array) {
