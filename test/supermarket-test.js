@@ -51,6 +51,13 @@ describe("Supermarket", function() {
       expect(supermarket.currentTillers).toEqual([2, 4, 1, 2]);
     });
   });
+
+  describe("#sliceArray", function() {
+    it("slices the current array by the number and returns the new array of elements sliced", function() {
+      var result = supermarket.arraySliced([1, 2, 3, 4, 5], 3);
+      expect(result).toEqual([1, 2, 3]);
+    });
+  });
 });
 
 //PLAN
