@@ -3,6 +3,12 @@ describe("Supermarket", function() {
     supermarket = new Supermarket();
   });
 
+  describe("#initialize", function() {
+    it("runningTime starts at zero", function() {
+      expect(supermarket.runningTime).toEqual(0);
+    });
+  });
+
   describe("#queueTime", function() {
     it("returns zero if the customerTimeArray is empty", function() {
       var result = supermarket.queueTime([], 1);
@@ -31,3 +37,5 @@ describe("Supermarket", function() {
 //queue array, number of tills
 //get sum of array first
 //have to work out when a till is free, the time of one till may finish when another one is not.
+
+//highest number gets deducted by the lowest, lowest is removed and next number in array is added. That number removed should be added to array, and then summed to get the total time.

@@ -12,7 +12,7 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
     return this.sumArray(customerTimeArray);
   }
   if (numberOfTills > customerTimeArray.length) {
-    return largestNumberInArray(customerTimeArray);
+    return this.largestNumberInArray(customerTimeArray);
   }
 };
 
