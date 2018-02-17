@@ -4,6 +4,9 @@ describe("Supermarket", function() {
   });
 
   describe("#initialize", function() {
+    it("customerTimeArray variable starts undefined", function() {
+      expect(supermarket.customerTimeArray).toEqual();
+    });
     it("runningTime variable starts at zero", function() {
       expect(supermarket.runningTime).toEqual(0);
     });

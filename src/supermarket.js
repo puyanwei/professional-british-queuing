@@ -1,4 +1,5 @@
 function Supermarket() {
+  this.customerTimeArray;
   this.runningTime = 0;
   this.currentTillers = [];
 }
