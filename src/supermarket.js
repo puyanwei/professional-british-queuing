@@ -1,4 +1,6 @@
-function Supermarket() {}
+function Supermarket() {
+  this.runningTime = 0;
+}
 
 Supermarket.prototype.sumArray = function(array) {
   return array.reduce((a, b) => a + b, 0);
