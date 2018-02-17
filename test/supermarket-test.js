@@ -16,25 +16,15 @@ describe("Supermarket", function() {
   });
 
   describe("#queueTime", function() {
-    it("slices the numberOfTills number amount of elements and adds them to the currentTillers variable", function() {
-      supermarket.queueTime([1, 2, 3, 4], 2);
-      expect(supermarket.currentTillers).toEqual([1, 2]);
-      expect(supermarket.customerTimeArray).toEqual([3, 4]);
-      supermarket.queueTime([5, 1, 3, 4, 5, 2, 5, 3], 3);
-      expect(supermarket.currentTillers).toEqual([5, 1, 3]);
-      expect(supermarket.customerTimeArray).toEqual([4, 5, 2, 5, 3]);
-    });
-  });
-
-  describe("#largestNumberInArray", function() {
-    it("returns the largest number customerTimeArray if the number of tills is more then the number of customers", function() {
-      expect(supermarket.largestNumberInArray([1, 2, 6, 2, 2])).toEqual(6);
-    });
-  });
-
-  describe("#sumArray", function() {
-    it("returns the sum of the array", function() {
-      expect(supermarket.sumArray([1, 2, 3])).toEqual(6);
+    it("returns the correct queueTime", function() {
+      var result = supermarket.queueTime([], 1);
+      expect(result).toEqual(0);
+      var result = supermarket.queueTime([1, 2, 3, 4], 1);
+      expect(result).toEqual(10);
+      var result = supermarket.queueTime([2, 2, 3, 3, 4, 4], 2);
+      expect(result).toEqual(9);
+      var result = supermarket.queueTime([1, 2, 3, 4, 5], 100);
+      expect(result).toEqual(5);
     });
   });
 
@@ -52,23 +42,6 @@ describe("Supermarket", function() {
     it("adds array to currentTillers", function() {
       supermarket.deductLowestToAll([3, 5, 2, 1, 3]);
       expect(supermarket.currentTillers).toEqual([2, 4, 1, 2]);
-    });
-  });
-
-  describe("#sliceArray", function() {
-    it("slices the current array by the number and returns the new array of elements sliced", function() {
-      var result = supermarket.sliceArray([1, 2, 3, 4, 5], 3);
-      expect(result).toEqual([1, 2, 3]);
-    });
-  });
-
-  describe("#addNextElement", function() {
-    it("moves in the next element to currentTillers from customerTimeArray", function() {
-      supermarket.currentTillers = [1, 2];
-      supermarket.customerTimeArray = [4, 5];
-      supermarket.addNextElement();
-      expect(supermarket.currentTillers).toEqual([1, 2, 4]);
-      expect(supermarket.customerTimeArray).toEqual([5]);
     });
   });
 });
