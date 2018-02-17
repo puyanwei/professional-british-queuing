@@ -16,22 +16,13 @@ describe("Supermarket", function() {
   });
 
   describe("#queueTime", function() {
-    it("adds the customerTimeArray array passed in to the customerTimeArray variable", function() {
-      supermarket.queueTime([1, 2, 3, 4], 1);
-      expect(supermarket.customerTimeArray).toEqual([1, 2, 3, 4]);
-    });
-    // it("returns zero if the customerTimeArray is empty", function() {
-    //   var result = supermarket.queueTime([], 1);
-    //   expect(result).toEqual(0);
-    // });
-    // it("returns the sum of customerTimeArray if there is only one till", function() {
-    //   var result = supermarket.queueTime([1, 2, 3, 4], 1);
-    //   expect(result).toEqual(10);
-    // });
     it("slices the numberOfTills number amount of elements and adds them to the currentTillers variable", function() {
       supermarket.queueTime([1, 2, 3, 4], 2);
       expect(supermarket.currentTillers).toEqual([1, 2]);
       expect(supermarket.customerTimeArray).toEqual([3, 4]);
+      supermarket.queueTime([5, 1, 3, 4, 5, 2, 5, 3], 3);
+      expect(supermarket.currentTillers).toEqual([5, 1, 3]);
+      expect(supermarket.customerTimeArray).toEqual([4, 5, 2, 5, 3]);
     });
   });
 
