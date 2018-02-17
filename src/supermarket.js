@@ -6,15 +6,16 @@ function Supermarket() {
 
 Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   this.customerTimeArray = customerTimeArray;
-  if (customerTimeArray.length === 0) {
-    return 0;
-  }
-  if (numberOfTills === 1) {
-    return this.sumArray(customerTimeArray);
-  }
-  if (numberOfTills > customerTimeArray.length) {
-    return this.largestNumberInArray(customerTimeArray);
-  }
+  // if (customerTimeArray.length === 0) {
+  //   return 0;
+  // }
+  // if (numberOfTills === 1) {
+  //   return this.sumArray(customerTimeArray);
+  // }
+  // if (numberOfTills > customerTimeArray.length) {
+  //   return this.largestNumberInArray(customerTimeArray);
+  // }
+  this.currentTillers = this.sliceArray(this.customerTimeArray, numberOfTills);
 };
 
 Supermarket.prototype.deductLowestToAll = function(array) {
