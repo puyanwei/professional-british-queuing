@@ -31,6 +31,13 @@ describe("Supermarket", function() {
       expect(supermarket.sumArray([1, 2, 3])).toEqual(6);
     });
   });
+
+  describe("#deductLowestToAll", function() {
+    it("deducts the lowest element of the array to all elements", function() {
+      var result = supermarket.deductLowestToAll([8, 5, 3, 9]);
+      expect(result).toEqual([5, 2, 0, 6]);
+    });
+  });
 });
 
 //PLAN
@@ -38,4 +45,4 @@ describe("Supermarket", function() {
 //get sum of array first
 //have to work out when a till is free, the time of one till may finish when another one is not.
 
-//highest number gets deducted by the lowest, lowest is removed and next number in array is added. That number removed should be added to array, and then summed to get the total time.
+//all numbers gets deducted by the lowest, lowest is removed and next number in array is added. That number removed should be added to array, and then summed to get the total time.
