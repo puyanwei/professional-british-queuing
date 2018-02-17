@@ -68,10 +68,10 @@ describe("Supermarket", function() {
 
   describe("#addNextElement", function() {
     it("moves in the next element to currentTillers from customerTimeArray", function() {
-      supermarket.currentTillers = [1, 2, 3];
+      supermarket.currentTillers = [1, 2];
       supermarket.customerTimeArray = [4, 5];
       supermarket.addNextElement();
-      expect(supermarket.currentTillers).toEqual([1, 2, 3, 4]);
+      expect(supermarket.currentTillers).toEqual([1, 2, 4]);
       expect(supermarket.customerTimeArray).toEqual([5]);
     });
   });

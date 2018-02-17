@@ -31,6 +31,11 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   return newArray;
 };
 
+Supermarket.prototype.addNextElement = function() {
+  this.currentTillers.push(this.customerTimeArray[0]);
+  this.customerTimeArray.shift(1);
+};
+
 Supermarket.prototype.sliceArray = function(array, sliceNumber) {
   return array.slice(0, sliceNumber);
 };
