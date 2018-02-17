@@ -27,6 +27,9 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   var lowest = Math.min.apply(null, array);
   array.forEach(function(element) {
     newArray.push(element - lowest);
+    if (element === lowest) {
+      newArray.pop(element);
+    }
   });
   return newArray;
 };
