@@ -4,8 +4,11 @@ describe("Supermarket", function() {
   });
 
   describe("#initialize", function() {
-    it("runningTime starts at zero", function() {
+    it("runningTime variable starts at zero", function() {
       expect(supermarket.runningTime).toEqual(0);
+    });
+    it("currentTillers variable starts as an empty array", function() {
+      expect(supermarket.currentTillers).toEqual([]);
     });
   });
 
