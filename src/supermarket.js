@@ -3,10 +3,6 @@ function Supermarket() {
   this.currentTillers = [];
 }
 
-Supermarket.prototype.sumArray = function(array) {
-  return array.reduce((a, b) => a + b, 0);
-};
-
 Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   if (customerTimeArray.length === 0) {
     return 0;
@@ -17,10 +13,6 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   if (numberOfTills > customerTimeArray.length) {
     return this.largestNumberInArray(customerTimeArray);
   }
-};
-
-Supermarket.prototype.largestNumberInArray = function(array) {
-  return Math.max.apply(null, array);
 };
 
 Supermarket.prototype.deductLowestToAll = function(array) {
@@ -34,4 +26,19 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   });
   this.runningTime += lowest;
   return newArray;
+};
+
+Supermarket.prototype.largestNumberInArray = function(array) {
+  return Math.max.apply(null, array);
+};
+
+Supermarket.prototype.removeLowestElement = function(array) {
+  var newArray = [];
+  newArray = array.pop(Math.min.apply(null, array));
+  console.log(array);
+  return newArray;
+};
+
+Supermarket.prototype.sumArray = function(array) {
+  return array.reduce((a, b) => a + b, 0);
 };
