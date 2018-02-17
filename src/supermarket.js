@@ -21,3 +21,12 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
 Supermarket.prototype.largestNumberInArray = function(array) {
   return Math.max.apply(null, array);
 };
+
+Supermarket.prototype.deductLowestToAll = function(array) {
+  var newArray = [];
+  var lowest = Math.min.apply(null, array);
+  array.forEach(function(element) {
+    newArray.push(element - lowest);
+  });
+  return newArray;
+};
