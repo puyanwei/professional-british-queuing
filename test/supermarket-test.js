@@ -46,6 +46,10 @@ describe("Supermarket", function() {
       supermarket.deductLowestToAll([7, 6, 7, 4, 3]);
       expect(supermarket.runningTime).toEqual(5);
     });
+    it("adds array to currentTillers", function() {
+      supermarket.deductLowestToAll([3, 5, 2, 1, 3]);
+      expect(supermarket.currentTillers).toEqual([2, 4, 1, 2]);
+    });
   });
 });
 
