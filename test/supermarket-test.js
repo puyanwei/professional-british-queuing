@@ -16,18 +16,30 @@ describe("Supermarket", function() {
   });
 
   fdescribe("#queueTime", function() {
+    it("returns zero if the queueTime array length is zero", function() {
+      expect(supermarket.sumArray([])).toEqual(0);
+    });
     it("inputting [1], 2 should return 1", function() {
       var result = supermarket.queueTime([1], 2);
       expect(result).toEqual(1);
     });
-    it("inputting [1,2,3,4],1 should return 10", function() {
+    it("returns the largest number in customerTimeArray if the number of tills is more then the number of customers", function() {
+      var result = supermarket.queueTime([1, 2, 3, 3, 2], 9);
+      expect(result).toEqual(3);
+    });
+
+    it("inputting [1, 2, 3, 4],1 should return 10", function() {
       var result = supermarket.queueTime([1, 2, 3, 4], 1);
       expect(result).toEqual(10);
     });
-    // var result = supermarket.queueTime([2, 2, 3, 3, 4, 4], 2);
-    // expect(result).toEqual(9);
-    // var result = supermarket.queueTime([1, 2, 3, 4, 5], 100);
-    // expect(result).toEqual(5);
+    it("inputting [2, 2, 3, 3, 4, 4], 2 should return 9", function() {
+      var result = supermarket.queueTime([2, 2, 3, 3, 4, 4], 2);
+      expect(result).toEqual(9);
+    });
+    fit("inputting [1,2,3,4,5], 100 should return 5", function() {
+      var result = supermarket.queueTime([1, 2, 3, 4, 5], 100);
+      expect(result).toEqual(5);
+    });
   });
 
   describe("#deductLowestToAll", function() {
