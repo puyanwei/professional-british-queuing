@@ -29,7 +29,7 @@ describe("Supermarket", function() {
       expect(result).toEqual(3);
     });
 
-    it("inputting [1, 2, 3, 4],1 should return 10", function() {
+    it("inputting [1, 2, 3, 4], 1 should return 10", function() {
       var result = supermarket.queueTime([1, 2, 3, 4], 1);
       expect(result).toEqual(10);
     });
@@ -60,6 +60,14 @@ describe("Supermarket", function() {
     });
   });
 
+  describe("#moveCustomersToTills", function() {
+    it("moves the customers to the number of free tills", function() {
+      supermarket.customerTimeArray = [2, 4, 5, 3, 3];
+      var result = supermarket.moveCustomersToTills(2);
+      expect(result).toEqual([2, 4]);
+    });
+  });
+
   describe("#moreTillsThenCustomers", function() {
     it("returns true if there are more tills then customers, and false if there are not", function() {
       supermarket.customerTimeArray = [1, 2, 3];
@@ -69,15 +77,14 @@ describe("Supermarket", function() {
   });
 
   describe("#largestNumberInArray", function() {
-    it("returns the larges number in the array", function() {
+    it("returns the largest number in the array", function() {
       expect(supermarket.largestNumberInArray([2, 6, 4])).toEqual(6);
     });
   });
+
+  describe("#lowestNumberInArray", function() {
+    it("returns the lowest number in the array", function() {
+      expect(supermarket.lowestNumberInArray([1, 6, 1, 4])).toEqual(1);
+    });
+  });
 });
-
-//PLAN
-//queue array, number of tills
-//get sum of array first
-//have to work out when a till is free, the time of one till may finish when another one is not.
-
-//all numbers gets deducted by the lowest, lowest is removed and next number in array is added. That number removed should be added to array, and then summed to get the total time.

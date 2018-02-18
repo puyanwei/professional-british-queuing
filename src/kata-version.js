@@ -1,10 +1,8 @@
-function Supermarket() {
-  this.customerTimeArray;
-  this.currentTillers = [];
-  this.runningTime = 0;
-}
+this.customerTimeArray;
+this.currentTillers = [];
+this.runningTime = 0;
 
-Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
+function queueTime(customers, n) {
   this.customerTimeArray = customerTimeArray;
   if (customerTimeArray.length === 0) {
     return this.runningTime;
@@ -12,11 +10,14 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   if (this.moreTillsThenCustomers(numberOfTills)) {
     return this.largestNumberInArray(this.customerTimeArray);
   }
-  this.currentTillers = this.moveCustomersToTills(numberOfTills);
-  console.log(this.currentTillers);
+  this.currentTillers = this.customerTimeArray.splice(
+    0,
+    numberOfTills - this.currentTillers.length
+  );
+
   this.deductLowestToAll(this.currentTillers);
   return this.queueTime(this.customerTimeArray, numberOfTills);
-};
+}
 
 Supermarket.prototype.deductLowestToAll = function(array) {
   var newArray = [];
@@ -29,13 +30,6 @@ Supermarket.prototype.deductLowestToAll = function(array) {
     }
   });
   this.currentTillers = newArray;
-};
-
-Supermarket.prototype.moveCustomersToTills = function(numberOfTills) {
-  return this.customerTimeArray.splice(
-    0,
-    numberOfTills - this.currentTillers.length
-  );
 };
 
 Supermarket.prototype.moreTillsThenCustomers = function(numberOfTills) {
