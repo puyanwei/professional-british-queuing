@@ -9,13 +9,15 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
   if (customerTimeArray.length === 0) {
     return this.runningTime;
   }
+  if (numberOfTills > customerTimeArray.length) {
+    return Math.max.apply(null, customerTimeArray);
+  }
   this.currentTillers = this.customerTimeArray.splice(
     0,
     numberOfTills - this.currentTillers.length
   );
 
   this.deductLowestToAll(this.currentTillers);
-  console.log(this.customerTimeArray);
   return this.queueTime(this.customerTimeArray, numberOfTills);
 };
 
@@ -23,7 +25,6 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   var newArray = [];
   var lowest = Math.min.apply(null, array);
   this.runningTime += lowest;
-  console.log("runningTime " + this.runningTime);
   array.forEach(element => {
     newArray.push(element - lowest);
     if (element === lowest) {
@@ -31,5 +32,4 @@ Supermarket.prototype.deductLowestToAll = function(array) {
     }
   });
   this.currentTillers = newArray;
-  console.log(this.currentTillers);
 };

@@ -17,7 +17,8 @@ describe("Supermarket", function() {
 
   fdescribe("#queueTime", function() {
     it("returns zero if the queueTime array length is zero", function() {
-      expect(supermarket.sumArray([])).toEqual(0);
+      var result = supermarket.queueTime([], 1);
+      expect(result).toEqual(0);
     });
     it("inputting [1], 2 should return 1", function() {
       var result = supermarket.queueTime([1], 2);
@@ -36,7 +37,7 @@ describe("Supermarket", function() {
       var result = supermarket.queueTime([2, 2, 3, 3, 4, 4], 2);
       expect(result).toEqual(9);
     });
-    fit("inputting [1,2,3,4,5], 100 should return 5", function() {
+    it("inputting [1,2,3,4,5], 100 should return 5", function() {
       var result = supermarket.queueTime([1, 2, 3, 4, 5], 100);
       expect(result).toEqual(5);
     });
