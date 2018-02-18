@@ -15,17 +15,19 @@ describe("Supermarket", function() {
     });
   });
 
-  describe("#queueTime", function() {
-    it("returns the correct queueTime", function() {
-      // var result = supermarket.queueTime([1], 2);
-      // expect(result).toEqual(1);
+  fdescribe("#queueTime", function() {
+    it("inputting [1], 2 should return 1", function() {
+      var result = supermarket.queueTime([1], 2);
+      expect(result).toEqual(1);
+    });
+    it("inputting [1,2,3,4],1 should return 10", function() {
       var result = supermarket.queueTime([1, 2, 3, 4], 1);
       expect(result).toEqual(10);
-      // var result = supermarket.queueTime([2, 2, 3, 3, 4, 4], 2);
-      // expect(result).toEqual(9);
-      // var result = supermarket.queueTime([1, 2, 3, 4, 5], 100);
-      // expect(result).toEqual(5);
     });
+    // var result = supermarket.queueTime([2, 2, 3, 3, 4, 4], 2);
+    // expect(result).toEqual(9);
+    // var result = supermarket.queueTime([1, 2, 3, 4, 5], 100);
+    // expect(result).toEqual(5);
   });
 
   describe("#deductLowestToAll", function() {
