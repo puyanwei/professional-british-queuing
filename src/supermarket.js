@@ -10,7 +10,7 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
     return this.runningTime;
   }
   if (this.moreTillsThenCustomers(numberOfTills)) {
-    return this.largestNumberInArray();
+    return this.largestNumberInArray(this.customerTimeArray);
   }
   this.currentTillers = this.customerTimeArray.splice(
     0,
@@ -38,6 +38,6 @@ Supermarket.prototype.moreTillsThenCustomers = function(numberOfTills) {
   return numberOfTills > this.customerTimeArray.length;
 };
 
-Supermarket.prototype.largestNumberInArray = function() {
-  return Math.max.apply(null, this.customerTimeArray);
+Supermarket.prototype.largestNumberInArray = function(array) {
+  return Math.max.apply(null, array);
 };

@@ -67,6 +67,12 @@ describe("Supermarket", function() {
       expect(supermarket.moreTillsThenCustomers(2)).toBe(false);
     });
   });
+
+  describe("#largestNumberInArray", function() {
+    it("returns the larges number in the array", function() {
+      expect(supermarket.largestNumberInArray([2, 6, 4])).toEqual(6);
+    });
+  });
 });
 
 //PLAN
