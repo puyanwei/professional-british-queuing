@@ -1,25 +1,25 @@
-function queueTime(customerTimeArray, numberOfTills) {
-  this.customerTimeArray = customerTimeArray;
-  this.currentTillers = [];
-  this.runningTime = 0;
+var currentTillers = [];
+var runningTime = 0;
+var iterations = 0;
 
-  if (customerTimeArray.length === 0) {
-    return runningTime;
+var queueTime = function(customerTimeArray, numberOfTills) {
+  var currentTillers = [];
+  iterations++;
+  ifEmptyArrayReturnAnswer(customerTimeArray);
+  currentTillers = moveCustomersToTills(customerTimeArray, numberOfTills);
+  if (customerTimeArray.length <= numberOfTills) {
+    return largestNumberInArray(currentTillers) + runningTime;
   }
-
-  if (moreTillsThenCustomers(numberOfTills)) {
-    return largestNumberInArray(customerTimeArray);
-  }
-
-  currentTillers = moveCustomersToTills(numberOfTills);
-  deductLowestToAll(currentTillers);
+  currentTillers = deductLowestToAll(currentTillers);
+  customerTimeArray = currentTillers.concat(customerTimeArray);
   return queueTime(customerTimeArray, numberOfTills);
-}
+};
 
-deductLowestToAll = function(array) {
+var deductLowestToAll = function(array) {
   var newArray = [];
   var lowest = lowestNumberInArray(array);
   runningTime += lowest;
+
   array.forEach(element => {
     newArray.push(element - lowest);
     if (element === lowest) {
@@ -27,20 +27,30 @@ deductLowestToAll = function(array) {
     }
   });
   currentTillers = newArray;
+  return currentTillers;
+  console.log(currentTillers, lowest, runningTime);
 };
 
-moveCustomersToTills = function(numberOfTills) {
-  return customerTimeArray.splice(0, numberOfTills - currentTillers.length);
+var ifEmptyArrayReturnAnswer = function(array) {
+  if (array.length === 0) {
+    var finalTime = runningTime;
+    runningTime = 0;
+    return finalTime;
+  }
 };
 
-moreTillsThenCustomers = function(numberOfTills) {
-  return numberOfTills > customerTimeArray.length;
+var moveCustomersToTills = function(array, numberOfTills) {
+  return array.splice(0, numberOfTills - currentTillers.length);
 };
 
-largestNumberInArray = function(array) {
+var moreTillsThenCustomers = function(array, numberOfTills) {
+  return numberOfTills > array.length;
+};
+
+var largestNumberInArray = function(array) {
   return Math.max.apply(null, array);
 };
 
-lowestNumberInArray = function(array) {
+var lowestNumberInArray = function(array) {
   return Math.min.apply(null, array);
 };
