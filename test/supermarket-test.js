@@ -59,6 +59,14 @@ describe("Supermarket", function() {
       expect(supermarket.currentTillers).toEqual([2, 4, 1, 2]);
     });
   });
+
+  describe("#moreTillsThenCustomers", function() {
+    it("returns true if there are more tills then customers, and false if there are not", function() {
+      supermarket.customerTimeArray = [1, 2, 3];
+      expect(supermarket.moreTillsThenCustomers(5)).toBe(true);
+      expect(supermarket.moreTillsThenCustomers(2)).toBe(false);
+    });
+  });
 });
 
 //PLAN
