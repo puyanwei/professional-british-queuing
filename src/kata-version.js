@@ -1,45 +1,46 @@
-this.customerTimeArray;
-this.currentTillers = [];
-this.runningTime = 0;
-
-function queueTime(customers, n) {
+function queueTime(customerTimeArray, numberOfTills) {
   this.customerTimeArray = customerTimeArray;
-  if (customerTimeArray.length === 0) {
-    return this.runningTime;
-  }
-  if (this.moreTillsThenCustomers(numberOfTills)) {
-    return this.largestNumberInArray(this.customerTimeArray);
-  }
-  this.currentTillers = this.customerTimeArray.splice(
-    0,
-    numberOfTills - this.currentTillers.length
-  );
+  this.currentTillers = [];
+  this.runningTime = 0;
 
-  this.deductLowestToAll(this.currentTillers);
-  return this.queueTime(this.customerTimeArray, numberOfTills);
+  if (customerTimeArray.length === 0) {
+    return runningTime;
+  }
+
+  if (moreTillsThenCustomers(numberOfTills)) {
+    return largestNumberInArray(customerTimeArray);
+  }
+
+  currentTillers = moveCustomersToTills(numberOfTills);
+  deductLowestToAll(currentTillers);
+  return queueTime(customerTimeArray, numberOfTills);
 }
 
-Supermarket.prototype.deductLowestToAll = function(array) {
+deductLowestToAll = function(array) {
   var newArray = [];
-  var lowest = this.lowestNumberInArray(array);
-  this.runningTime += lowest;
+  var lowest = lowestNumberInArray(array);
+  runningTime += lowest;
   array.forEach(element => {
     newArray.push(element - lowest);
     if (element === lowest) {
       newArray.pop(element);
     }
   });
-  this.currentTillers = newArray;
+  currentTillers = newArray;
 };
 
-Supermarket.prototype.moreTillsThenCustomers = function(numberOfTills) {
-  return numberOfTills > this.customerTimeArray.length;
+moveCustomersToTills = function(numberOfTills) {
+  return customerTimeArray.splice(0, numberOfTills - currentTillers.length);
 };
 
-Supermarket.prototype.largestNumberInArray = function(array) {
+moreTillsThenCustomers = function(numberOfTills) {
+  return numberOfTills > customerTimeArray.length;
+};
+
+largestNumberInArray = function(array) {
   return Math.max.apply(null, array);
 };
 
-Supermarket.prototype.lowestNumberInArray = function(array) {
+lowestNumberInArray = function(array) {
   return Math.min.apply(null, array);
 };

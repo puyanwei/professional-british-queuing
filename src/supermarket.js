@@ -1,21 +1,21 @@
 function Supermarket() {
-  this.customerTimeArray;
   this.currentTillers = [];
   this.runningTime = 0;
 }
 
 Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
-  this.customerTimeArray = customerTimeArray;
   if (customerTimeArray.length === 0) {
     return this.runningTime;
   }
-  if (this.moreTillsThenCustomers(numberOfTills)) {
-    return this.largestNumberInArray(this.customerTimeArray);
+  if (this.moreTillsThenCustomers(customerTimeArray, numberOfTills)) {
+    return this.largestNumberInArray(customerTimeArray);
   }
-  this.currentTillers = this.moveCustomersToTills(numberOfTills);
-  console.log(this.currentTillers);
+  this.currentTillers = this.moveCustomersToTills(
+    customerTimeArray,
+    numberOfTills
+  );
   this.deductLowestToAll(this.currentTillers);
-  return this.queueTime(this.customerTimeArray, numberOfTills);
+  return this.queueTime(customerTimeArray, numberOfTills);
 };
 
 Supermarket.prototype.deductLowestToAll = function(array) {
@@ -31,15 +31,12 @@ Supermarket.prototype.deductLowestToAll = function(array) {
   this.currentTillers = newArray;
 };
 
-Supermarket.prototype.moveCustomersToTills = function(numberOfTills) {
-  return this.customerTimeArray.splice(
-    0,
-    numberOfTills - this.currentTillers.length
-  );
+Supermarket.prototype.moveCustomersToTills = function(array, numberOfTills) {
+  return array.splice(0, numberOfTills - this.currentTillers.length);
 };
 
-Supermarket.prototype.moreTillsThenCustomers = function(numberOfTills) {
-  return numberOfTills > this.customerTimeArray.length;
+Supermarket.prototype.moreTillsThenCustomers = function(array, numberOfTills) {
+  return numberOfTills > array.length;
 };
 
 Supermarket.prototype.largestNumberInArray = function(array) {

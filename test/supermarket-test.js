@@ -62,17 +62,15 @@ describe("Supermarket", function() {
 
   describe("#moveCustomersToTills", function() {
     it("moves the customers to the number of free tills", function() {
-      supermarket.customerTimeArray = [2, 4, 5, 3, 3];
-      var result = supermarket.moveCustomersToTills(2);
+      var result = supermarket.moveCustomersToTills([2, 4, 5, 3, 3], 2);
       expect(result).toEqual([2, 4]);
     });
   });
 
   describe("#moreTillsThenCustomers", function() {
     it("returns true if there are more tills then customers, and false if there are not", function() {
-      supermarket.customerTimeArray = [1, 2, 3];
-      expect(supermarket.moreTillsThenCustomers(5)).toBe(true);
-      expect(supermarket.moreTillsThenCustomers(2)).toBe(false);
+      expect(supermarket.moreTillsThenCustomers([1, 2, 3], 5)).toBe(true);
+      expect(supermarket.moreTillsThenCustomers([1, 2, 3], 2)).toBe(false);
     });
   });
 
