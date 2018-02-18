@@ -23,7 +23,7 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
 
 Supermarket.prototype.deductLowestToAll = function(array) {
   var newArray = [];
-  var lowest = Math.min.apply(null, array);
+  var lowest = this.lowestNumberInArray(array);
   this.runningTime += lowest;
   array.forEach(element => {
     newArray.push(element - lowest);
@@ -40,4 +40,8 @@ Supermarket.prototype.moreTillsThenCustomers = function(numberOfTills) {
 
 Supermarket.prototype.largestNumberInArray = function(array) {
   return Math.max.apply(null, array);
+};
+
+Supermarket.prototype.lowestNumberInArray = function(array) {
+  return Math.min.apply(null, array);
 };
