@@ -10,7 +10,7 @@ Supermarket.prototype.queueTime = function(customerTimeArray, numberOfTills) {
     return this.runningTime;
   }
   if (this.moreTillsThenCustomers(numberOfTills)) {
-    return Math.max.apply(null, customerTimeArray);
+    return this.largestNumberInArray();
   }
   this.currentTillers = this.customerTimeArray.splice(
     0,
@@ -36,4 +36,8 @@ Supermarket.prototype.deductLowestToAll = function(array) {
 
 Supermarket.prototype.moreTillsThenCustomers = function(numberOfTills) {
   return numberOfTills > this.customerTimeArray.length;
+};
+
+Supermarket.prototype.largestNumberInArray = function() {
+  return Math.max.apply(null, this.customerTimeArray);
 };
