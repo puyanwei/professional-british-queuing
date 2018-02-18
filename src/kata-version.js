@@ -5,38 +5,33 @@ var iterations = 0;
 var queueTime = function(customerTimeArray, numberOfTills) {
   var currentTillers = [];
   iterations++;
-  ifEmptyArrayReturnAnswer(customerTimeArray);
-  currentTillers = moveCustomersToTills(customerTimeArray, numberOfTills);
-  if (customerTimeArray.length <= numberOfTills) {
-    return largestNumberInArray(currentTillers) + runningTime;
+  if (customerTimeArray.length === 0) {
+    return runningTime;
   }
+  if (moreTillsThenCustomers(customerTimeArray, numberOfTills)) {
+    return largestNumberInArray(customerTimeArray);
+  }
+  currentTillers = moveCustomersToTills(customerTimeArray, numberOfTills);
+  console.log(currentTillers, customerTimeArray, runningTime);
   currentTillers = deductLowestToAll(currentTillers);
+  console.log(currentTillers, customerTimeArray, runningTime);
   customerTimeArray = currentTillers.concat(customerTimeArray);
+  console.log(currentTillers, customerTimeArray, runningTime);
   return queueTime(customerTimeArray, numberOfTills);
 };
 
 var deductLowestToAll = function(array) {
   var newArray = [];
   var lowest = lowestNumberInArray(array);
-  runningTime += lowest;
 
+  runningTime += lowest;
   array.forEach(element => {
     newArray.push(element - lowest);
     if (element === lowest) {
       newArray.pop(element);
     }
   });
-  currentTillers = newArray;
-  return currentTillers;
-  console.log(currentTillers, lowest, runningTime);
-};
-
-var ifEmptyArrayReturnAnswer = function(array) {
-  if (array.length === 0) {
-    var finalTime = runningTime;
-    runningTime = 0;
-    return finalTime;
-  }
+  return newArray;
 };
 
 var moveCustomersToTills = function(array, numberOfTills) {

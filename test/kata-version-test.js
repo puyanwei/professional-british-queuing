@@ -25,10 +25,12 @@ describe("supermarket queue kata", function() {
     it("inputting [1, 2, 3, 4], 1 should return 10", function() {
       var result = queueTime([1, 2, 3, 4], 1);
       expect(result).toEqual(10);
+      runningTime = 0;
     });
     it("inputting [2, 2, 3, 3, 4, 4], 2 should return 9", function() {
       var result = queueTime([2, 2, 3, 3, 4, 4], 2);
       expect(result).toEqual(9);
+      runningTime = 0;
     });
     it("inputting [1,2,3,4,5], 100 should return 5", function() {
       var result = queueTime([1, 2, 3, 4, 5], 100);
@@ -38,17 +40,15 @@ describe("supermarket queue kata", function() {
 
   describe("#deductLowestToAll", function() {
     it("deducts the lowest element of the array to all elements, and removes it", function() {
-      deductLowestToAll([8, 5, 3, 9]);
-      expect(currentTillers).toEqual([5, 2, 6]);
+      var result = deductLowestToAll([8, 5, 3, 9]);
+      expect(result).toEqual([5, 2, 6]);
+      result = deductLowestToAll([3, 5, 2, 1, 3]);
+      expect(result).toEqual([2, 4, 1, 2]);
     });
     it("removed element added to runningTime variable", function() {
       runningTime = 0;
       deductLowestToAll([10, 5, 7, 2, 3]);
       expect(runningTime).toEqual(2);
-    });
-    it("adds array to currentTillers", function() {
-      deductLowestToAll([3, 5, 2, 1, 3]);
-      expect(currentTillers).toEqual([2, 4, 1, 2]);
     });
   });
 
@@ -86,14 +86,6 @@ describe("supermarket queue kata", function() {
   describe("#lowestNumberInArray", function() {
     it("returns the lowest number in the array", function() {
       expect(lowestNumberInArray([1, 6, 1, 4])).toEqual(1);
-    });
-  });
-
-  describe("#ifEmptyArrayReturnAnswer", function() {
-    it("returns the final runningTime of the queuing", function() {
-      runningTime = 15;
-      result = ifEmptyArrayReturnAnswer([]);
-      expect(result).toEqual(15);
     });
   });
   //
