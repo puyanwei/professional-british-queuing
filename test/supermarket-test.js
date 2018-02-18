@@ -15,7 +15,7 @@ describe("Supermarket", function() {
     });
   });
 
-  fdescribe("#queueTime", function() {
+  describe("#queueTime", function() {
     it("returns zero if the queueTime array length is zero", function() {
       var result = supermarket.queueTime([], 1);
       expect(result).toEqual(0);
